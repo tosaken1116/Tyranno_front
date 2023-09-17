@@ -1,6 +1,6 @@
 export const ROUNDED = {
-  SMALL: '4px',
-  MEDIUM: '8px',
-  LARGE: '16px',
-  FULL: '9999px',
+  SMALL: 'rounded-[4px]',
+  MEDIUM: 'rounded-[8px]',
+  LARGE: 'rounded-[16px]',
+  FULL: 'rounded-full',
 };
