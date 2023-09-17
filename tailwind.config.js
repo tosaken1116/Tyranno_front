@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import { BREAKPOINTS } from './src/constants/breakpoint';
 import { COLORS } from './src/constants/colors';
 module.exports = {
   content: [
@@ -8,6 +9,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screen: {
+        'xs': BREAKPOINTS.XS,
+        'sm': BREAKPOINTS.SM,
+        'md': BREAKPOINTS.MD,
+        'lg': BREAKPOINTS.LG,
+        'xl': BREAKPOINTS.XL,
+        '2xl': BREAKPOINTS.XXL,
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
