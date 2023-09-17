@@ -19,6 +19,31 @@ module.exports = {
           light: COLORS.DEEP_RED.LIGHT,
           dark: COLORS.DEEP_RED.DARK,
         },
+        'gold': {
+          main: COLORS.GOLD.MAIN,
+          light: COLORS.GOLD.LIGHT,
+          dark: COLORS.GOLD.DARK,
+        },
+        'custom-dark': {
+          main: COLORS.BLACK.MAIN,
+          light: COLORS.BLACK.LIGHT,
+          dark: COLORS.BLACK.DARK,
+        },
+        'success': {
+          main: COLORS.SUCCESS.MAIN,
+          light: COLORS.SUCCESS.LIGHT,
+          dark: COLORS.SUCCESS.DARK,
+        },
+        'error': {
+          main: COLORS.ERROR.MAIN,
+          light: COLORS.ERROR.LIGHT,
+          dark: COLORS.ERROR.DARK,
+        },
+        'info': {
+          main: COLORS.INFO.MAIN,
+          light: COLORS.INFO.LIGHT,
+          dark: COLORS.INFO.DARK,
+        },
       },
     },
   },
