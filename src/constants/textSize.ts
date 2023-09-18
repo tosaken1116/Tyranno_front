@@ -1,4 +1,4 @@
-export const textSize = {
+export const TEXT_SIZE = {
   XS: 'text-[10px]', //  注釈やフッターテキスト
   SM: 'text-[12px]', //  サブテキストや小さなラベル
   BASE: 'text-[16px]', //  本文やデフォルトのテキストサイズ
