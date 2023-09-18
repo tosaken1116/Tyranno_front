@@ -1,0 +1,41 @@
+import type { HTMLAttributes } from 'react';
+
+import clsx from 'clsx';
+
+import { Stack } from '../Stack';
+
+import { COLORS } from '@/constants/colors';
+
+type Props = {
+  totalNum: number;
+  selectedNum: number;
+} & HTMLAttributes<HTMLParagraphElement>;
+const defaultStyle =
+  'bg-white font-bold flex justify-center text-white items-center rounded-full w-12 h-12';
+export const ProgressNumber: React.FC<Props> = ({
+  totalNum,
+  selectedNum,
+  className,
+}) => {
+  if (selectedNum > totalNum || selectedNum < 1) {
+    throw new Error('selectedNum > totalNum');
+  }
+  const progressNumberStyle = clsx(defaultStyle, className);
+
+  return (
+    <Stack direction="row" spacing={4}>
+      {Array.from({ length: totalNum }).map((_, i) => (
+        <p
+          key={i}
+          style={{
+            backgroundColor:
+              i + 1 == selectedNum ? COLORS.DEEP_RED.MAIN : COLORS.BLACK.MAIN,
+          }}
+          className={progressNumberStyle}
+        >
+          {i + 1}
+        </p>
+      ))}
+    </Stack>
+  );
+};
