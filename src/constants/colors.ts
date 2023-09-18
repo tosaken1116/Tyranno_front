@@ -29,4 +29,13 @@ export const COLORS = {
     LIGHT: '#64B5F6',
     DARK: '#1565C0',
   },
+  TEXT: {
+    BLACK: '#000000',
+    SOFT_BLACK: '#1A1A1A',
+    DEEP_BLUE: '#2C3E50',
+    DARK_GREY: '#333333',
+    GREY: '#4A4A4A',
+    MEDIUM_GREY: '#555555',
+    LIGHT_GREY: '#707070',
+  },
 } as const;
