@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import { BREAKPOINTS } from './src/constants/breakpoint';
 import { COLORS } from './src/constants/colors';
+import { ROUNDED } from './src/constants/rounded';
 import { TEXT_SIZE } from './src/constants/textSize';
 module.exports = {
   content: [
@@ -9,6 +10,12 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    borderRadius: {
+      small: ROUNDED.SMALL,
+      medium: ROUNDED.MEDIUM,
+      large: ROUNDED.LARGE,
+      full: ROUNDED.FULL,
+    },
     extend: {
       screen: {
         'xs': BREAKPOINTS.XS,
@@ -32,6 +39,7 @@ module.exports = {
         '2xl': [TEXT_SIZE.XXL],
         'huge': [TEXT_SIZE.HUGE],
       },
+
       colors: {
         'deep-red': {
           main: COLORS.DEEP_RED.MAIN,
