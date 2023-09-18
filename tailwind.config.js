@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import { BREAKPOINTS } from './src/constants/breakpoint';
 import { COLORS } from './src/constants/colors';
+import { TEXT_SIZE } from './src/constants/textSize';
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -21,6 +22,15 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      textSize: {
+        'xs': [TEXT_SIZE.XS],
+        'sm': [TEXT_SIZE.SM],
+        'base': [TEXT_SIZE.BASE],
+        'lg': [TEXT_SIZE.LG],
+        'xl': [TEXT_SIZE.XL],
+        '2xl': [TEXT_SIZE.XXL],
+        'huge': [TEXT_SIZE.HUGE],
       },
       colors: {
         'deep-red': {
