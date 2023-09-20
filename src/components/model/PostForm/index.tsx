@@ -16,7 +16,7 @@ export const PostForm: React.FC<Props> = ({ userIcon }) => {
   const clickPostButtonHandler = (): void => {
     sendPost().catch((e) => {
       setError(true);
-      console.log(e);
+      console.error(e);
     });
   };
 
@@ -32,7 +32,6 @@ export const PostForm: React.FC<Props> = ({ userIcon }) => {
         error={error}
         changeText={(event): void => {
           setPostText(event.target.value);
-          console.log(postText);
         }}
         clickPostButton={clickPostButtonHandler}
       />
