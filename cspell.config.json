@@ -7,14 +7,28 @@
   // words - list of words to be always considered correct
   "words": [
     "autodocs",
+    "bufbuild",
     "clsx",
+    "connectrpc",
     "fontawesome",
     "fortawesome",
     "Hackathon",
     "NNYD",
+    "nocheck",
+    "proto",
+    "protobuf",
+    "protoc",
+    "protos",
     "recaptcha",
     "Recaptcha",
-    "Tyranno"
+    "tanstack",
+    "totp",
+    "Totp",
+    "tyranno",
+    "Tyranno",
+    "unfollow",
+    "Unfollow",
+    "volta"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
