@@ -30,7 +30,8 @@
     "Tyranno",
     "unfollow",
     "Unfollow",
-    "volta"
+    "volta",
+    "connectquery"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
