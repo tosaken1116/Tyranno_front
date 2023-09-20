@@ -205,7 +205,7 @@ export const getMyFollow = createQueryService({
       getMyFollow: {
         name: "GetMyFollow",
         kind: MethodKind.Unary,
-        I: GetUserRequest,
+        I: Empty,
         O: GetUsersResponse,
       },
     },
@@ -222,7 +222,7 @@ export const getMyFollower = createQueryService({
       getMyFollower: {
         name: "GetMyFollower",
         kind: MethodKind.Unary,
-        I: GetUserRequest,
+        I: Empty,
         O: GetUsersResponse,
       },
     },
