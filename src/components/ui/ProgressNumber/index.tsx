@@ -27,7 +27,7 @@ export const ProgressNumber: React.FC<Props> = ({
   return (
     <Stack direction="row" spacing={4} className="items-center">
       {Array.from({ length: totalNum }).map((_, i) => (
-        <div key={i}>
+        <div key={i} className="flex flex-row gap-4 items-center select-none">
           <p
             style={{
               backgroundColor:
