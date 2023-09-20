@@ -11,7 +11,7 @@ import type {
   PartialMessage,
   PlainMessage,
 } from '@bufbuild/protobuf';
-import { Message, proto3, protoInt64 } from '@bufbuild/protobuf';
+import { Message, proto3 } from '@bufbuild/protobuf';
 import { User } from './user_pb';
 
 /**
@@ -19,9 +19,9 @@ import { User } from './user_pb';
  */
 export class Post extends Message<Post> {
   /**
-   * @generated from field: int64 id = 1;
+   * @generated from field: int32 id = 1;
    */
-  id = protoInt64.zero;
+  id = 0;
 
   /**
    * @generated from field: string text = 2;
@@ -39,9 +39,9 @@ export class Post extends Message<Post> {
   favoriteNumber = 0;
 
   /**
-   * @generated from field: optional int64 reply_at = 5;
+   * @generated from field: optional int32 reply_at = 5;
    */
-  replyAt?: bigint;
+  replyAt?: number;
 
   /**
    * @generated from field: int32 reply_number = 6;
@@ -71,7 +71,7 @@ export class Post extends Message<Post> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.Post';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'id', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: 'text', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
     { no: 3, name: 'user', kind: 'message', T: User },
     {
@@ -84,7 +84,7 @@ export class Post extends Message<Post> {
       no: 5,
       name: 'reply_at',
       kind: 'scalar',
-      T: 3 /* ScalarType.INT64 */,
+      T: 5 /* ScalarType.INT32 */,
       opt: true,
     },
     {
@@ -142,9 +142,9 @@ export class CreatePostRequest extends Message<CreatePostRequest> {
   text = '';
 
   /**
-   * @generated from field: optional int64 reply_at = 2;
+   * @generated from field: optional int32 reply_at = 2;
    */
-  replyAt?: bigint;
+  replyAt?: number;
 
   constructor(data?: PartialMessage<CreatePostRequest>) {
     super();
@@ -159,7 +159,7 @@ export class CreatePostRequest extends Message<CreatePostRequest> {
       no: 2,
       name: 'reply_at',
       kind: 'scalar',
-      T: 3 /* ScalarType.INT64 */,
+      T: 5 /* ScalarType.INT32 */,
       opt: true,
     },
   ]);
@@ -247,9 +247,9 @@ export class CreatePostResponse extends Message<CreatePostResponse> {
  */
 export class DeletePostRequest extends Message<DeletePostRequest> {
   /**
-   * @generated from field: int64 id = 1;
+   * @generated from field: int32 id = 1;
    */
-  id = protoInt64.zero;
+  id = 0;
 
   constructor(data?: PartialMessage<DeletePostRequest>) {
     super();
@@ -259,7 +259,7 @@ export class DeletePostRequest extends Message<DeletePostRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.DeletePostRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'id', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(
@@ -345,9 +345,9 @@ export class DeletePostResponse extends Message<DeletePostResponse> {
  */
 export class GetPostRequest extends Message<GetPostRequest> {
   /**
-   * @generated from field: int64 id = 1;
+   * @generated from field: int32 id = 1;
    */
-  id = protoInt64.zero;
+  id = 0;
 
   constructor(data?: PartialMessage<GetPostRequest>) {
     super();
@@ -357,7 +357,7 @@ export class GetPostRequest extends Message<GetPostRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.GetPostRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'id', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(
@@ -541,9 +541,9 @@ export class GetPostsResponse extends Message<GetPostsResponse> {
  */
 export class GetRepliesRequest extends Message<GetRepliesRequest> {
   /**
-   * @generated from field: int64 reply_at = 1;
+   * @generated from field: int32 reply_at = 1;
    */
-  replyAt = protoInt64.zero;
+  replyAt = 0;
 
   constructor(data?: PartialMessage<GetRepliesRequest>) {
     super();
@@ -553,7 +553,7 @@ export class GetRepliesRequest extends Message<GetRepliesRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.GetRepliesRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'reply_at', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'reply_at', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(
@@ -639,9 +639,9 @@ export class GetRepliesResponse extends Message<GetRepliesResponse> {
  */
 export class CreateFavoriteRequest extends Message<CreateFavoriteRequest> {
   /**
-   * @generated from field: int64 favorite_at = 1;
+   * @generated from field: int32 favorite_at = 1;
    */
-  favoriteAt = protoInt64.zero;
+  favoriteAt = 0;
 
   constructor(data?: PartialMessage<CreateFavoriteRequest>) {
     super();
@@ -651,7 +651,7 @@ export class CreateFavoriteRequest extends Message<CreateFavoriteRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.CreateFavoriteRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'favorite_at', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'favorite_at', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(
@@ -740,9 +740,9 @@ export class CreateFavoriteResponse extends Message<CreateFavoriteResponse> {
  */
 export class GetFavoriteRequest extends Message<GetFavoriteRequest> {
   /**
-   * @generated from field: int64 post_id = 1;
+   * @generated from field: int32 post_id = 1;
    */
-  postId = protoInt64.zero;
+  postId = 0;
 
   constructor(data?: PartialMessage<GetFavoriteRequest>) {
     super();
@@ -752,7 +752,7 @@ export class GetFavoriteRequest extends Message<GetFavoriteRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.GetFavoriteRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'post_id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'post_id', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(
@@ -838,9 +838,9 @@ export class GetFavoriteResponse extends Message<GetFavoriteResponse> {
  */
 export class DeleteFavoriteRequest extends Message<DeleteFavoriteRequest> {
   /**
-   * @generated from field: int64 favorite_at = 1;
+   * @generated from field: int32 favorite_at = 1;
    */
-  favoriteAt = protoInt64.zero;
+  favoriteAt = 0;
 
   constructor(data?: PartialMessage<DeleteFavoriteRequest>) {
     super();
@@ -850,7 +850,7 @@ export class DeleteFavoriteRequest extends Message<DeleteFavoriteRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = 'schemas.protos.v1.DeleteFavoriteRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: 'favorite_at', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'favorite_at', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(
