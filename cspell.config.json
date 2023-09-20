@@ -9,6 +9,7 @@
     "autodocs",
     "bufbuild",
     "clsx",
+    "connectquery",
     "connectrpc",
     "fontawesome",
     "fortawesome",
@@ -19,6 +20,7 @@
     "protobuf",
     "protoc",
     "protos",
+    "qrcode",
     "recaptcha",
     "Recaptcha",
     "tanstack",
@@ -30,7 +32,8 @@
     "Unfollow",
     "volta",
     "Tyranno",
-    "Repost"
+    "Repost"、
+    "connectquery"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect

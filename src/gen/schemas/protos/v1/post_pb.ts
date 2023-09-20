@@ -3,9 +3,16 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { User } from "./user_pb.js";
+import type {
+  BinaryReadOptions,
+  FieldList,
+  JsonReadOptions,
+  JsonValue,
+  PartialMessage,
+  PlainMessage,
+} from '@bufbuild/protobuf';
+import { Message, proto3, protoInt64 } from '@bufbuild/protobuf';
+import { User } from './user_pb';
 
 /**
  * @generated from message schemas.protos.v1.Post
@@ -19,7 +26,7 @@ export class Post extends Message<Post> {
   /**
    * @generated from field: string text = 2;
    */
-  text = "";
+  text = '';
 
   /**
    * @generated from field: schemas.protos.v1.User user = 3;
@@ -44,17 +51,17 @@ export class Post extends Message<Post> {
   /**
    * @generated from field: string published_at = 7;
    */
-  publishedAt = "";
+  publishedAt = '';
 
   /**
    * @generated from field: string created_at = 8;
    */
-  createdAt = "";
+  createdAt = '';
 
   /**
    * @generated from field: string updated_at = 9;
    */
-  updatedAt = "";
+  updatedAt = '';
 
   constructor(data?: PartialMessage<Post>) {
     super();
@@ -62,32 +69,65 @@ export class Post extends Message<Post> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.Post";
+  static readonly typeName = 'schemas.protos.v1.Post';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 2, name: "text", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "user", kind: "message", T: User },
-    { no: 4, name: "favorite_number", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 5, name: "reply_at", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
-    { no: 6, name: "reply_number", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 7, name: "published_at", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "created_at", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "updated_at", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: 'id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: 'text', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'user', kind: 'message', T: User },
+    {
+      no: 4,
+      name: 'favorite_number',
+      kind: 'scalar',
+      T: 5 /* ScalarType.INT32 */,
+    },
+    {
+      no: 5,
+      name: 'reply_at',
+      kind: 'scalar',
+      T: 3 /* ScalarType.INT64 */,
+      opt: true,
+    },
+    {
+      no: 6,
+      name: 'reply_number',
+      kind: 'scalar',
+      T: 5 /* ScalarType.INT32 */,
+    },
+    {
+      no: 7,
+      name: 'published_at',
+      kind: 'scalar',
+      T: 9 /* ScalarType.STRING */,
+    },
+    { no: 8, name: 'created_at', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: 'updated_at', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Post {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): Post {
     return new Post().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Post {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): Post {
     return new Post().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Post {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): Post {
     return new Post().fromJsonString(jsonString, options);
   }
 
-  static equals(a: Post | PlainMessage<Post> | undefined, b: Post | PlainMessage<Post> | undefined): boolean {
+  static equals(
+    a: Post | PlainMessage<Post> | undefined,
+    b: Post | PlainMessage<Post> | undefined
+  ): boolean {
     return proto3.util.equals(Post, a, b);
   }
 }
@@ -99,7 +139,7 @@ export class CreatePostRequest extends Message<CreatePostRequest> {
   /**
    * @generated from field: string text = 1;
    */
-  text = "";
+  text = '';
 
   /**
    * @generated from field: optional int64 reply_at = 2;
@@ -112,25 +152,43 @@ export class CreatePostRequest extends Message<CreatePostRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.CreatePostRequest";
+  static readonly typeName = 'schemas.protos.v1.CreatePostRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "text", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "reply_at", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
+    { no: 1, name: 'text', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    {
+      no: 2,
+      name: 'reply_at',
+      kind: 'scalar',
+      T: 3 /* ScalarType.INT64 */,
+      opt: true,
+    },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreatePostRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): CreatePostRequest {
     return new CreatePostRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreatePostRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): CreatePostRequest {
     return new CreatePostRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreatePostRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): CreatePostRequest {
     return new CreatePostRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: CreatePostRequest | PlainMessage<CreatePostRequest> | undefined, b: CreatePostRequest | PlainMessage<CreatePostRequest> | undefined): boolean {
+  static equals(
+    a: CreatePostRequest | PlainMessage<CreatePostRequest> | undefined,
+    b: CreatePostRequest | PlainMessage<CreatePostRequest> | undefined
+  ): boolean {
     return proto3.util.equals(CreatePostRequest, a, b);
   }
 }
@@ -150,24 +208,36 @@ export class CreatePostResponse extends Message<CreatePostResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.CreatePostResponse";
+  static readonly typeName = 'schemas.protos.v1.CreatePostResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "post", kind: "message", T: Post },
+    { no: 1, name: 'post', kind: 'message', T: Post },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreatePostResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): CreatePostResponse {
     return new CreatePostResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreatePostResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): CreatePostResponse {
     return new CreatePostResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreatePostResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): CreatePostResponse {
     return new CreatePostResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: CreatePostResponse | PlainMessage<CreatePostResponse> | undefined, b: CreatePostResponse | PlainMessage<CreatePostResponse> | undefined): boolean {
+  static equals(
+    a: CreatePostResponse | PlainMessage<CreatePostResponse> | undefined,
+    b: CreatePostResponse | PlainMessage<CreatePostResponse> | undefined
+  ): boolean {
     return proto3.util.equals(CreatePostResponse, a, b);
   }
 }
@@ -187,24 +257,36 @@ export class DeletePostRequest extends Message<DeletePostRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.DeletePostRequest";
+  static readonly typeName = 'schemas.protos.v1.DeletePostRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeletePostRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): DeletePostRequest {
     return new DeletePostRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeletePostRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): DeletePostRequest {
     return new DeletePostRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeletePostRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): DeletePostRequest {
     return new DeletePostRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: DeletePostRequest | PlainMessage<DeletePostRequest> | undefined, b: DeletePostRequest | PlainMessage<DeletePostRequest> | undefined): boolean {
+  static equals(
+    a: DeletePostRequest | PlainMessage<DeletePostRequest> | undefined,
+    b: DeletePostRequest | PlainMessage<DeletePostRequest> | undefined
+  ): boolean {
     return proto3.util.equals(DeletePostRequest, a, b);
   }
 }
@@ -224,24 +306,36 @@ export class DeletePostResponse extends Message<DeletePostResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.DeletePostResponse";
+  static readonly typeName = 'schemas.protos.v1.DeletePostResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "status", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 1, name: 'status', kind: 'scalar', T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeletePostResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): DeletePostResponse {
     return new DeletePostResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeletePostResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): DeletePostResponse {
     return new DeletePostResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeletePostResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): DeletePostResponse {
     return new DeletePostResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: DeletePostResponse | PlainMessage<DeletePostResponse> | undefined, b: DeletePostResponse | PlainMessage<DeletePostResponse> | undefined): boolean {
+  static equals(
+    a: DeletePostResponse | PlainMessage<DeletePostResponse> | undefined,
+    b: DeletePostResponse | PlainMessage<DeletePostResponse> | undefined
+  ): boolean {
     return proto3.util.equals(DeletePostResponse, a, b);
   }
 }
@@ -261,24 +355,36 @@ export class GetPostRequest extends Message<GetPostRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetPostRequest";
+  static readonly typeName = 'schemas.protos.v1.GetPostRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetPostRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetPostRequest {
     return new GetPostRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetPostRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetPostRequest {
     return new GetPostRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetPostRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetPostRequest {
     return new GetPostRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetPostRequest | PlainMessage<GetPostRequest> | undefined, b: GetPostRequest | PlainMessage<GetPostRequest> | undefined): boolean {
+  static equals(
+    a: GetPostRequest | PlainMessage<GetPostRequest> | undefined,
+    b: GetPostRequest | PlainMessage<GetPostRequest> | undefined
+  ): boolean {
     return proto3.util.equals(GetPostRequest, a, b);
   }
 }
@@ -298,24 +404,36 @@ export class GetPostResponse extends Message<GetPostResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetPostResponse";
+  static readonly typeName = 'schemas.protos.v1.GetPostResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "post", kind: "message", T: Post },
+    { no: 1, name: 'post', kind: 'message', T: Post },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetPostResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetPostResponse {
     return new GetPostResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetPostResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetPostResponse {
     return new GetPostResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetPostResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetPostResponse {
     return new GetPostResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetPostResponse | PlainMessage<GetPostResponse> | undefined, b: GetPostResponse | PlainMessage<GetPostResponse> | undefined): boolean {
+  static equals(
+    a: GetPostResponse | PlainMessage<GetPostResponse> | undefined,
+    b: GetPostResponse | PlainMessage<GetPostResponse> | undefined
+  ): boolean {
     return proto3.util.equals(GetPostResponse, a, b);
   }
 }
@@ -327,7 +445,7 @@ export class GetPostsRequest extends Message<GetPostsRequest> {
   /**
    * @generated from field: string scope = 1;
    */
-  scope = "";
+  scope = '';
 
   constructor(data?: PartialMessage<GetPostsRequest>) {
     super();
@@ -335,24 +453,36 @@ export class GetPostsRequest extends Message<GetPostsRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetPostsRequest";
+  static readonly typeName = 'schemas.protos.v1.GetPostsRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "scope", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: 'scope', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetPostsRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetPostsRequest {
     return new GetPostsRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetPostsRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetPostsRequest {
     return new GetPostsRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetPostsRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetPostsRequest {
     return new GetPostsRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetPostsRequest | PlainMessage<GetPostsRequest> | undefined, b: GetPostsRequest | PlainMessage<GetPostsRequest> | undefined): boolean {
+  static equals(
+    a: GetPostsRequest | PlainMessage<GetPostsRequest> | undefined,
+    b: GetPostsRequest | PlainMessage<GetPostsRequest> | undefined
+  ): boolean {
     return proto3.util.equals(GetPostsRequest, a, b);
   }
 }
@@ -372,24 +502,36 @@ export class GetPostsResponse extends Message<GetPostsResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetPostsResponse";
+  static readonly typeName = 'schemas.protos.v1.GetPostsResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "posts", kind: "message", T: Post, repeated: true },
+    { no: 1, name: 'posts', kind: 'message', T: Post, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetPostsResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetPostsResponse {
     return new GetPostsResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetPostsResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetPostsResponse {
     return new GetPostsResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetPostsResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetPostsResponse {
     return new GetPostsResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetPostsResponse | PlainMessage<GetPostsResponse> | undefined, b: GetPostsResponse | PlainMessage<GetPostsResponse> | undefined): boolean {
+  static equals(
+    a: GetPostsResponse | PlainMessage<GetPostsResponse> | undefined,
+    b: GetPostsResponse | PlainMessage<GetPostsResponse> | undefined
+  ): boolean {
     return proto3.util.equals(GetPostsResponse, a, b);
   }
 }
@@ -409,24 +551,36 @@ export class GetRepliesRequest extends Message<GetRepliesRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetRepliesRequest";
+  static readonly typeName = 'schemas.protos.v1.GetRepliesRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "reply_at", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'reply_at', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetRepliesRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetRepliesRequest {
     return new GetRepliesRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetRepliesRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetRepliesRequest {
     return new GetRepliesRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetRepliesRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetRepliesRequest {
     return new GetRepliesRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetRepliesRequest | PlainMessage<GetRepliesRequest> | undefined, b: GetRepliesRequest | PlainMessage<GetRepliesRequest> | undefined): boolean {
+  static equals(
+    a: GetRepliesRequest | PlainMessage<GetRepliesRequest> | undefined,
+    b: GetRepliesRequest | PlainMessage<GetRepliesRequest> | undefined
+  ): boolean {
     return proto3.util.equals(GetRepliesRequest, a, b);
   }
 }
@@ -446,24 +600,36 @@ export class GetRepliesResponse extends Message<GetRepliesResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetRepliesResponse";
+  static readonly typeName = 'schemas.protos.v1.GetRepliesResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "replies", kind: "message", T: Post, repeated: true },
+    { no: 1, name: 'replies', kind: 'message', T: Post, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetRepliesResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetRepliesResponse {
     return new GetRepliesResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetRepliesResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetRepliesResponse {
     return new GetRepliesResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetRepliesResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetRepliesResponse {
     return new GetRepliesResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetRepliesResponse | PlainMessage<GetRepliesResponse> | undefined, b: GetRepliesResponse | PlainMessage<GetRepliesResponse> | undefined): boolean {
+  static equals(
+    a: GetRepliesResponse | PlainMessage<GetRepliesResponse> | undefined,
+    b: GetRepliesResponse | PlainMessage<GetRepliesResponse> | undefined
+  ): boolean {
     return proto3.util.equals(GetRepliesResponse, a, b);
   }
 }
@@ -483,24 +649,36 @@ export class CreateFavoriteRequest extends Message<CreateFavoriteRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.CreateFavoriteRequest";
+  static readonly typeName = 'schemas.protos.v1.CreateFavoriteRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "favorite_at", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'favorite_at', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateFavoriteRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): CreateFavoriteRequest {
     return new CreateFavoriteRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreateFavoriteRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): CreateFavoriteRequest {
     return new CreateFavoriteRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreateFavoriteRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): CreateFavoriteRequest {
     return new CreateFavoriteRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: CreateFavoriteRequest | PlainMessage<CreateFavoriteRequest> | undefined, b: CreateFavoriteRequest | PlainMessage<CreateFavoriteRequest> | undefined): boolean {
+  static equals(
+    a: CreateFavoriteRequest | PlainMessage<CreateFavoriteRequest> | undefined,
+    b: CreateFavoriteRequest | PlainMessage<CreateFavoriteRequest> | undefined
+  ): boolean {
     return proto3.util.equals(CreateFavoriteRequest, a, b);
   }
 }
@@ -520,24 +698,39 @@ export class CreateFavoriteResponse extends Message<CreateFavoriteResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.CreateFavoriteResponse";
+  static readonly typeName = 'schemas.protos.v1.CreateFavoriteResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "status", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 1, name: 'status', kind: 'scalar', T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateFavoriteResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): CreateFavoriteResponse {
     return new CreateFavoriteResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreateFavoriteResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): CreateFavoriteResponse {
     return new CreateFavoriteResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreateFavoriteResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): CreateFavoriteResponse {
     return new CreateFavoriteResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: CreateFavoriteResponse | PlainMessage<CreateFavoriteResponse> | undefined, b: CreateFavoriteResponse | PlainMessage<CreateFavoriteResponse> | undefined): boolean {
+  static equals(
+    a:
+      | CreateFavoriteResponse
+      | PlainMessage<CreateFavoriteResponse>
+      | undefined,
+    b: CreateFavoriteResponse | PlainMessage<CreateFavoriteResponse> | undefined
+  ): boolean {
     return proto3.util.equals(CreateFavoriteResponse, a, b);
   }
 }
@@ -557,24 +750,36 @@ export class GetFavoriteRequest extends Message<GetFavoriteRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetFavoriteRequest";
+  static readonly typeName = 'schemas.protos.v1.GetFavoriteRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "post_id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'post_id', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetFavoriteRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetFavoriteRequest {
     return new GetFavoriteRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetFavoriteRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetFavoriteRequest {
     return new GetFavoriteRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetFavoriteRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetFavoriteRequest {
     return new GetFavoriteRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetFavoriteRequest | PlainMessage<GetFavoriteRequest> | undefined, b: GetFavoriteRequest | PlainMessage<GetFavoriteRequest> | undefined): boolean {
+  static equals(
+    a: GetFavoriteRequest | PlainMessage<GetFavoriteRequest> | undefined,
+    b: GetFavoriteRequest | PlainMessage<GetFavoriteRequest> | undefined
+  ): boolean {
     return proto3.util.equals(GetFavoriteRequest, a, b);
   }
 }
@@ -594,24 +799,36 @@ export class GetFavoriteResponse extends Message<GetFavoriteResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.GetFavoriteResponse";
+  static readonly typeName = 'schemas.protos.v1.GetFavoriteResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "users", kind: "message", T: User, repeated: true },
+    { no: 1, name: 'users', kind: 'message', T: User, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetFavoriteResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): GetFavoriteResponse {
     return new GetFavoriteResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetFavoriteResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): GetFavoriteResponse {
     return new GetFavoriteResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetFavoriteResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): GetFavoriteResponse {
     return new GetFavoriteResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: GetFavoriteResponse | PlainMessage<GetFavoriteResponse> | undefined, b: GetFavoriteResponse | PlainMessage<GetFavoriteResponse> | undefined): boolean {
+  static equals(
+    a: GetFavoriteResponse | PlainMessage<GetFavoriteResponse> | undefined,
+    b: GetFavoriteResponse | PlainMessage<GetFavoriteResponse> | undefined
+  ): boolean {
     return proto3.util.equals(GetFavoriteResponse, a, b);
   }
 }
@@ -631,24 +848,36 @@ export class DeleteFavoriteRequest extends Message<DeleteFavoriteRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.DeleteFavoriteRequest";
+  static readonly typeName = 'schemas.protos.v1.DeleteFavoriteRequest';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "favorite_at", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: 'favorite_at', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteFavoriteRequest {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): DeleteFavoriteRequest {
     return new DeleteFavoriteRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeleteFavoriteRequest {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): DeleteFavoriteRequest {
     return new DeleteFavoriteRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeleteFavoriteRequest {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): DeleteFavoriteRequest {
     return new DeleteFavoriteRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: DeleteFavoriteRequest | PlainMessage<DeleteFavoriteRequest> | undefined, b: DeleteFavoriteRequest | PlainMessage<DeleteFavoriteRequest> | undefined): boolean {
+  static equals(
+    a: DeleteFavoriteRequest | PlainMessage<DeleteFavoriteRequest> | undefined,
+    b: DeleteFavoriteRequest | PlainMessage<DeleteFavoriteRequest> | undefined
+  ): boolean {
     return proto3.util.equals(DeleteFavoriteRequest, a, b);
   }
 }
@@ -668,25 +897,39 @@ export class DeleteFavoriteResponse extends Message<DeleteFavoriteResponse> {
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "schemas.protos.v1.DeleteFavoriteResponse";
+  static readonly typeName = 'schemas.protos.v1.DeleteFavoriteResponse';
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "status", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 1, name: 'status', kind: 'scalar', T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteFavoriteResponse {
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): DeleteFavoriteResponse {
     return new DeleteFavoriteResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeleteFavoriteResponse {
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): DeleteFavoriteResponse {
     return new DeleteFavoriteResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeleteFavoriteResponse {
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): DeleteFavoriteResponse {
     return new DeleteFavoriteResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: DeleteFavoriteResponse | PlainMessage<DeleteFavoriteResponse> | undefined, b: DeleteFavoriteResponse | PlainMessage<DeleteFavoriteResponse> | undefined): boolean {
+  static equals(
+    a:
+      | DeleteFavoriteResponse
+      | PlainMessage<DeleteFavoriteResponse>
+      | undefined,
+    b: DeleteFavoriteResponse | PlainMessage<DeleteFavoriteResponse> | undefined
+  ): boolean {
     return proto3.util.equals(DeleteFavoriteResponse, a, b);
   }
 }
-
