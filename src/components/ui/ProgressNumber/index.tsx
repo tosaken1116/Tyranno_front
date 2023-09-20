@@ -27,9 +27,8 @@ export const ProgressNumber: React.FC<Props> = ({
   return (
     <Stack direction="row" spacing={4} className="items-center">
       {Array.from({ length: totalNum }).map((_, i) => (
-        <>
+        <div key={i}>
           <p
-            key={i}
             style={{
               backgroundColor:
                 i + 1 == selectedNum ? COLORS.DEEP_RED.MAIN : COLORS.BLACK.MAIN,
@@ -45,7 +44,7 @@ export const ProgressNumber: React.FC<Props> = ({
               className="text-custom-dark-light"
             />
           )}
-        </>
+        </div>
       ))}
     </Stack>
   );
