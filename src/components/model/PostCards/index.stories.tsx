@@ -89,7 +89,26 @@ const posts: Post[] = [post1, post2, post3];
 export const Default: Story = {
   render: () => (
     <div className="w-[600px] h-screen bg-custom-dark-light">
-      <PostCardsPresentation {...{ posts: posts }} />
+      <PostCardsPresentation
+        {...{
+          posts: posts,
+          openPostDetail: (): void => {
+            console.log('click post card');
+          },
+          clickFavoriteButton: (): void => {
+            console.log('clickFavoriteButton');
+          },
+          clickReplyButton: (): void => {
+            console.log('clickReplyButton');
+          },
+          clickRepostButton: (): void => {
+            console.log('clickRepostButton');
+          },
+          clickShareButton: (): void => {
+            console.log('clickShareButton');
+          },
+        }}
+      />
     </div>
   ),
 };
@@ -104,6 +123,8 @@ export const OneCard: Story = {
         publishedAt: '2023/05/23 12:23:43',
         postText:
           'ハッカソン鯖でのeveryoneメンション事件の件に関してみなさんに謝罪いたします。\nこの度は誤ってeveryoneにnotionリンクを誤爆してしまし、誠に申し訳ございませんでした。今後このようなことがないよう再発防止に努めてまいります。',
+        favoriteNumber: 0,
+        replyNumber: 0,
         isAlreadyFavorite: true,
         isAlreadyReply: false,
         openPostDetail: (): void => {
