@@ -35,7 +35,8 @@
     "connectquery",
     "zustand",
     "Repost",
-    "Favorited"
+    "Favorited",
+    "Favo"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
