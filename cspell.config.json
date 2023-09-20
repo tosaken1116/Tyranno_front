@@ -28,7 +28,9 @@
     "Tyranno",
     "unfollow",
     "Unfollow",
-    "volta"
+    "volta",
+    "Tyranno",
+    "Repost"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
