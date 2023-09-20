@@ -8,7 +8,7 @@ import { createPost } from '@/gen/schemas/protos/v1/post-PostService_connectquer
 export const usePostForm = (): {
   postText: string;
   setPostText: Dispatch<SetStateAction<string>>;
-  sendPost: () => Promise<string | null>;
+  sendPost: () => Promise<void>;
 } => {
   const [postText, setPostText] = useState<string>('');
 
@@ -27,7 +27,7 @@ export const usePostForm = (): {
       },
     })
   );
-  const sendPost = async (): Promise<string | null> => {
+  const sendPost = async (): Promise<void> => {
     await createMutation.mutateAsync(
       {
         text: postText,
@@ -38,7 +38,6 @@ export const usePostForm = (): {
         },
       }
     );
-    return null;
   };
 
   return { postText, setPostText, sendPost };
