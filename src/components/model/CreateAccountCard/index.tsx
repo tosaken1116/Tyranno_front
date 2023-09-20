@@ -9,15 +9,19 @@ import { ProgressNumber } from '@/components/ui/ProgressNumber';
 export const CreateAccountCard: React.FC = () => {
   const {
     handleCodeChange,
+    handleVerifyTokenChange,
     handlePhoneNumberChange,
     phoneNumberValue,
     verifyCode,
     sendSMSCode,
     signInWithGoogle,
     authProgress,
+    handleQrComplete,
+    verifyAppCode,
     totalProgress,
     isLoading,
     errorText,
+    authenticationCodeUrl,
   } = useCreateAccountCard();
   return (
     <div className="bg-gold-dark relative flex flex-col items-center rounded-large p-8 w-[640px]">
@@ -26,12 +30,16 @@ export const CreateAccountCard: React.FC = () => {
       </div>
       <CreateAccountCardPresentation
         handleCodeChange={handleCodeChange}
+        handleVerifyTokenChange={handleVerifyTokenChange}
         handlePhoneNumberChange={handlePhoneNumberChange}
         phoneNumberValue={phoneNumberValue}
         verifyCode={verifyCode}
         sendSMSCode={sendSMSCode}
+        verifyAppCode={verifyAppCode}
         signInWithGoogle={signInWithGoogle}
         authProgress={authProgress}
+        authenticationCodeUrl={authenticationCodeUrl}
+        handleQrComplete={handleQrComplete}
       />
       {errorText && (
         <>
