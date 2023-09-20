@@ -15,6 +15,7 @@
     "markuplint",
     "nextjs",
     "precommit",
+    "Repost",
     "tailwindcss",
     "zustand"
   ]
