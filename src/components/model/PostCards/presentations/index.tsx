@@ -6,9 +6,21 @@ import { Divider } from '@/components/ui/Divider';
 
 type Props = {
   posts: Post[];
+  openPostDetail: () => void;
+  clickReplyButton: () => void;
+  clickFavoriteButton: () => void;
+  clickRepostButton: () => void;
+  clickShareButton: () => void;
 };
 
-export const PostCardsPresentation: React.FC<Props> = ({ posts }) => (
+export const PostCardsPresentation: React.FC<Props> = ({
+  posts,
+  clickReplyButton,
+  clickFavoriteButton,
+  openPostDetail,
+  clickRepostButton,
+  clickShareButton,
+}) => (
   <div className="w-full h-full">
     {posts.map((item) => (
       <div key={Number(item.id)}>
@@ -18,23 +30,15 @@ export const PostCardsPresentation: React.FC<Props> = ({ posts }) => (
           userIcon={item.user!.icon}
           publishedAt={item.publishedAt}
           postText={item.text}
+          favoriteNumber={item.favoriteNumber}
+          replyNumber={item.replyNumber}
           isAlreadyFavorite
           isAlreadyReply={false}
-          openPostDetail={(): void => {
-            console.log('click post card');
-          }}
-          clickFavoriteButton={(): void => {
-            console.log('clickFavoriteButton');
-          }}
-          clickReplyButton={(): void => {
-            console.log('clickReplyButton');
-          }}
-          clickRepostButton={(): void => {
-            console.log('clickRepostButton');
-          }}
-          clickShareButton={(): void => {
-            console.log('clickShareButton');
-          }}
+          openPostDetail={openPostDetail}
+          clickFavoriteButton={clickFavoriteButton}
+          clickReplyButton={clickReplyButton}
+          clickRepostButton={clickRepostButton}
+          clickShareButton={clickShareButton}
           className="px-3 pt-4 pb-1"
         />
         <Divider

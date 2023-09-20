@@ -8,6 +8,7 @@ import {
   faRepeat,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
 import Link from 'next/link';
 
 import { DateDiffLabel } from '@/components/ui/DateDiffLabel';
@@ -20,6 +21,8 @@ type Props = {
   userIcon: string;
   publishedAt: string;
   postText: string;
+  favoriteNumber: number;
+  replyNumber: number;
   isAlreadyFavorite?: boolean;
   isAlreadyReply?: boolean;
   openPostDetail: () => void;
@@ -35,6 +38,8 @@ export const Card: React.FC<Props> = ({
   userIcon,
   publishedAt,
   postText,
+  favoriteNumber,
+  replyNumber,
   isAlreadyFavorite = false,
   isAlreadyReply = false,
   clickReplyButton,
@@ -53,7 +58,7 @@ export const Card: React.FC<Props> = ({
 
   return (
     <button
-      className={`w-full flex gap-2 ${className}`}
+      className={clsx('w-full flex gap-2', className)}
       onClick={onClickHandler}
     >
       <LinkIcon
@@ -77,7 +82,7 @@ export const Card: React.FC<Props> = ({
           >
             {userName}
           </Link>
-          <span className="text-gold-dark">{userDisplayId}</span>
+          <span className="text-gold-dark">{`@${userDisplayId}`}</span>
           <span className="text-gold-dark">・</span>
           <DateDiffLabel
             lang="ja"
@@ -117,6 +122,7 @@ export const Card: React.FC<Props> = ({
                 onClick={clickRepostButton}
               />
             }
+            label={String(replyNumber)}
           />
 
           <IconWithLabel
@@ -137,6 +143,7 @@ export const Card: React.FC<Props> = ({
                 onClick={clickFavoriteButton}
               />
             }
+            label={String(favoriteNumber)}
           />
 
           <FontAwesomeIcon
