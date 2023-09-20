@@ -31,7 +31,8 @@
     "unfollow",
     "Unfollow",
     "volta",
-    "connectquery"
+    "connectquery",
+    "zustand"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
