@@ -4,8 +4,9 @@
 // @ts-nocheck
 
 import { createQueryService } from "@bufbuild/connect-query";
-import { MethodKind } from "@bufbuild/protobuf";
+import { Empty, MethodKind } from "@bufbuild/protobuf";
 import { CreateFavoriteRequest, CreateFavoriteResponse, CreatePostRequest, CreatePostResponse, DeleteFavoriteRequest, DeleteFavoriteResponse, DeletePostRequest, DeletePostResponse, GetPostRequest, GetPostResponse, GetPostsRequest, GetPostsResponse, GetRepliesRequest, GetRepliesResponse } from "./post_pb";
+import { GetUserRequest, GetUsersResponse } from "./user_pb";
 
 export const typeName = "schemas.protos.v1.PostService";
 
@@ -127,3 +128,54 @@ export const deleteFavorite = createQueryService({
     typeName: "schemas.protos.v1.PostService",
   },
 }).deleteFavorite;
+
+/**
+ * @generated from rpc schemas.protos.v1.PostService.GetMyFavoritePosts
+ */
+export const getMyFavoritePosts = createQueryService({
+  service: {
+    methods: {
+      getMyFavoritePosts: {
+        name: "GetMyFavoritePosts",
+        kind: MethodKind.Unary,
+        I: Empty,
+        O: GetPostsResponse,
+      },
+    },
+    typeName: "schemas.protos.v1.PostService",
+  },
+}).getMyFavoritePosts;
+
+/**
+ * @generated from rpc schemas.protos.v1.PostService.GetOthersFavoritePosts
+ */
+export const getOthersFavoritePosts = createQueryService({
+  service: {
+    methods: {
+      getOthersFavoritePosts: {
+        name: "GetOthersFavoritePosts",
+        kind: MethodKind.Unary,
+        I: GetUserRequest,
+        O: GetPostsResponse,
+      },
+    },
+    typeName: "schemas.protos.v1.PostService",
+  },
+}).getOthersFavoritePosts;
+
+/**
+ * @generated from rpc schemas.protos.v1.PostService.GetUsersFavoritedPost
+ */
+export const getUsersFavoritedPost = createQueryService({
+  service: {
+    methods: {
+      getUsersFavoritedPost: {
+        name: "GetUsersFavoritedPost",
+        kind: MethodKind.Unary,
+        I: GetPostRequest,
+        O: GetUsersResponse,
+      },
+    },
+    typeName: "schemas.protos.v1.PostService",
+  },
+}).getUsersFavoritedPost;
