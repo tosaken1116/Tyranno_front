@@ -25,4 +25,4 @@ export const FIREBASE_CONFIG = {
     process.env['NEXT_PUBLIC_FIREBASE_APP_ID'],
     'NEXT_PUBLIC_FIREBASE_APP_ID'
   ),
-};
+} as const;
