@@ -25,7 +25,7 @@ const user1: User = {
   displayId: 'cat',
   name: 'cat',
   icon: 'https://avatars.githubusercontent.com/u/65708479?v=4',
-  profile: 'hoge',
+  profile: 'cat',
   createdAt: '2022/03/05 12:32:42',
   updatedAt: '2022/03/05 12:32:42',
   followNumber: 0,

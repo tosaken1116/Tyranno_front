@@ -43,7 +43,7 @@ const user3: User = {
 
 const post1: Post = {
   id: BigInt(1),
-  text: 'hoasjhdflkj',
+  text: 'cat',
   user: user1,
   favoriteNumber: 0,
   publishedAt: '2022/03/05 12:32:42',
@@ -53,7 +53,7 @@ const post1: Post = {
 
 const post2: Post = {
   id: BigInt(2),
-  text: 'hoasjhdflkj',
+  text: 'cat',
   user: user2,
   favoriteNumber: 0,
   publishedAt: '2022/03/05 12:32:42',
@@ -63,7 +63,7 @@ const post2: Post = {
 
 const post3: Post = {
   id: BigInt(3),
-  text: 'hoasjhdflkj',
+  text: 'cat',
   user: user3,
   favoriteNumber: 0,
   publishedAt: '2022/03/05 12:32:42',
