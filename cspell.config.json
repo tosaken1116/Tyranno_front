@@ -31,9 +31,11 @@
     "unfollow",
     "Unfollow",
     "volta",
-    "Tyranno",
     "Repost",
-    "connectquery"
+    "connectquery",
+    "zustand",
+    "Repost",
+    "Favorited"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
