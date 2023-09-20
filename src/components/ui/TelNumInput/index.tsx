@@ -14,17 +14,16 @@ const TelNumInput: React.FC<Props> = ({
   const onChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ): void => {
-    console.log(countryCode + phoneNumber);
     setState((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
   return (
-    <div>
+    <div className="self-center">
       <select
         value={countryCode}
-        className="w-32 rounded-sm text-gold-main focus:outline-0"
+        className="w-32 py-1 rounded-sm text-gold-dark focus:outline-0"
         name="countryCode"
         onChange={onChange}
       >
@@ -36,7 +35,7 @@ const TelNumInput: React.FC<Props> = ({
         name="phoneNumber"
         value={phoneNumber}
         onChange={onChange}
-        className=" focus:outline-0"
+        className="focus:outline-0 py-[2.4px] text-gold-dark"
         placeholder="電話番号を入力"
       />
     </div>
