@@ -98,7 +98,9 @@ export const CreateAccountCardPresentation: React.FC<Props> = ({
       >
         <QRCode
           url={authenticationCodeUrl}
-          handleQrComplete={handleQrComplete}
+          handleQrComplete={(): void => {
+            void handleQrComplete();
+          }}
         />
       </div>
       <div

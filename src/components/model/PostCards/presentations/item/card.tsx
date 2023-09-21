@@ -16,6 +16,7 @@ import { IconWithLabel } from '@/components/ui/IconWithLabel';
 import { LinkIcon } from '@/components/ui/LinkIcon';
 
 type Props = {
+  id: number;
   userName: string;
   userDisplayId: string;
   userIcon: string;
@@ -25,14 +26,30 @@ type Props = {
   replyNumber: number;
   isAlreadyFavorite?: boolean;
   isAlreadyReply?: boolean;
-  openPostDetail: () => void;
-  clickReplyButton: () => void;
-  clickFavoriteButton: () => void;
-  clickRepostButton: () => void;
+  openPostDetail: ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }) => void;
+  clickReplyButton: ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }) => void;
+  clickFavoriteButton: (
+    id: number,
+    isAlreadyFavorite: boolean
+  ) => Promise<void>;
+  clickRepostButton: (id: number) => void;
   clickShareButton: () => void;
   className?: string;
 };
 export const Card: React.FC<Props> = ({
+  id,
   userName,
   userDisplayId,
   userIcon,
@@ -52,7 +69,7 @@ export const Card: React.FC<Props> = ({
   const onClickHandler = (event: MouseEvent<HTMLButtonElement>): void => {
     const target = event.target as HTMLButtonElement;
     if (target.nodeName === 'DIV' || target.nodeName === 'BUTTON') {
-      openPostDetail();
+      openPostDetail({ paramKey: 'post_id', paramValue: String(id) });
     }
   };
 
@@ -100,7 +117,12 @@ export const Card: React.FC<Props> = ({
                 icon={faCommentDots}
                 size="sm"
                 className="cursor-pointer p-1 rounded-medium hover:bg-deep-red-dark"
-                onClick={clickReplyButton}
+                onClick={(): void => {
+                  clickReplyButton({
+                    paramKey: 'post_id',
+                    paramValue: String(id),
+                  });
+                }}
               />
             }
           />
@@ -111,7 +133,7 @@ export const Card: React.FC<Props> = ({
                 icon={faRepeat}
                 size="sm"
                 className="cursor-pointer p-1 rounded-medium hover:bg-deep-red-dark"
-                onClick={clickRepostButton}
+                onClick={(): void => clickRepostButton(id)}
               />
             }
             selectedIcon={
@@ -119,7 +141,7 @@ export const Card: React.FC<Props> = ({
                 icon={faRepeat}
                 size="sm"
                 className="cursor-pointer bg-deep-red-dark p-1 rounded-medium"
-                onClick={clickRepostButton}
+                onClick={(): void => clickRepostButton(id)}
               />
             }
             label={String(replyNumber)}
@@ -132,7 +154,9 @@ export const Card: React.FC<Props> = ({
                 icon={reHeart}
                 size="sm"
                 className="cursor-pointer p-1 rounded-medium hover:bg-deep-red-dark"
-                onClick={clickFavoriteButton}
+                onClick={(): void => {
+                  void clickFavoriteButton(id, true);
+                }}
               />
             }
             selectedIcon={
@@ -140,7 +164,9 @@ export const Card: React.FC<Props> = ({
                 icon={faHeart}
                 size="sm"
                 className="cursor-pointer p-1 rounded-medium hover:bg-deep-red-dark"
-                onClick={clickFavoriteButton}
+                onClick={(): void => {
+                  void clickFavoriteButton(id, false);
+                }}
               />
             }
             label={String(favoriteNumber)}

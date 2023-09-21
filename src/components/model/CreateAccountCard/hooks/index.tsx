@@ -54,33 +54,87 @@ export const useCreateAccountCard = (): IUseCreateAccountCard => {
     useState<ConfirmationResult>();
   const [authProgress, setAuthProgress] = useState<ProgressNumbers>(1);
   const [googleUser, setGoogleUser] = useState<User>();
-  const { mutateAsync } = useMutation(createUser.useMutation());
+  const { mutateAsync } = useMutation(
+    createUser.useMutation({
+      callOptions: {
+        headers: [
+          ['AuthProvider', 'firebase'],
+          [
+            'Authorization',
+            typeof window !== 'undefined'
+              ? `Bearer ${localStorage.getItem('accessToken')}`
+              : '',
+          ],
+        ],
+      },
+    })
+  );
   const { mutateAsync: checkVerifyToken } = useMutation(
-    verifyTotp.useMutation()
+    verifyTotp.useMutation({
+      callOptions: {
+        headers: [
+          ['AuthProvider', 'firebase'],
+          [
+            'Authorization',
+            typeof window !== 'undefined'
+              ? `Bearer ${localStorage.getItem('accessToken')}`
+              : '',
+          ],
+        ],
+      },
+    })
   );
 
   const {
     data: signInResult,
     refetch,
     isError,
-    isFetched,
-    isFetching,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-  } = useQuery(signIn.useQuery(), {
-    enabled: false,
-    refetchInterval: 1000,
-    retry: 10,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  });
-  const { data, refetch: genTotpKey } = useQuery<{ totpUrl: string }>(
+  } = useQuery(
+    signIn.useQuery(
+      {},
+      {
+        callOptions: {
+          headers: [
+            ['AuthProvider', 'firebase'],
+            [
+              'Authorization',
+              typeof window !== 'undefined'
+                ? `Bearer ${localStorage.getItem('accessToken')}`
+                : '',
+            ],
+          ],
+        },
+      }
+    )
+    // {
+    //   enabled: false,
+    //   refetchInterval: 1000,
+    //   retry: 10,
+    //   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // }
+  );
+
+  const { data, refetch: genTotpKey } = useQuery(
     // TODO:返り値の方が適切に設定されてないため
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    generateTotpKey.useQuery<{ totpUrl: string }>({
-      firebaseId: googleUser?.uid ?? '',
-    }),
-    { enabled: false, refetchInterval: 1000, retry: 1 }
+    generateTotpKey.useQuery(
+      {
+        firebaseId: googleUser?.uid ?? '',
+      },
+      {
+        callOptions: {
+          headers: [
+            ['AuthProvider', 'firebase'],
+            [
+              'Authorization',
+              typeof window !== 'undefined'
+                ? `Bearer ${localStorage.getItem('accessToken')}`
+                : '',
+            ],
+          ],
+        },
+      }
+    )
+    // { enabled: false, refetchInterval: 1000, retry: 1 }
   );
   const provider = new GoogleAuthProvider();
 
@@ -104,6 +158,11 @@ export const useCreateAccountCard = (): IUseCreateAccountCard => {
         return;
       }
       setGoogleUser(auth.currentUser);
+      localStorage.setItem(
+        'accessToken',
+        (await auth.currentUser.getIdToken()) ?? ''
+      );
+
       setAuthProgress(2);
     } catch (error) {
       setErrorText('Google認証に失敗しました');
@@ -136,7 +195,6 @@ export const useCreateAccountCard = (): IUseCreateAccountCard => {
         return;
       }
       const res = await confirmationResult.confirm(code);
-      localStorage.setItem('accessToken', (await res.user.getIdToken()) ?? '');
       await mutateAsync(
         {
           icon: res.user.photoURL ?? '',
@@ -173,14 +231,18 @@ export const useCreateAccountCard = (): IUseCreateAccountCard => {
       return;
     }
     await refetch();
-    if (isError && !isFetched && !isFetching) {
+    if (isError) {
       setErrorText('ログイン認証に失敗しました');
     }
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    localStorage.setItem('jwtToken', signInResult?.token ?? '');
-    router.push('/home');
+    if (signInResult != undefined) {
+      localStorage.setItem('jwtToken', signInResult.token);
+      router.push('/home');
+      return;
+    }
+    setErrorText('ログイン中にエラーが発生しました');
   };
 
   return {
