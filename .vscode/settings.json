@@ -16,6 +16,7 @@
     "nextjs",
     "precommit",
     "Repost",
-    "tailwindcss"
+    "tailwindcss",
+    "zustand"
   ]
 }
