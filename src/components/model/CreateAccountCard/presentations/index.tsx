@@ -53,7 +53,7 @@ export const CreateAccountCardPresentation: React.FC<Props> = ({
   );
 
   return (
-    <div className="relative overflow-hidden w-[480px] h-[300px]">
+    <div className="relative overflow-hidden w-[480px] h-[360px]">
       <div
         className={authStyle({ progress: authProgress == 1 ? 'in' : 'past' })}
       >

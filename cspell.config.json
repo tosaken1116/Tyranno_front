@@ -11,9 +11,10 @@
     "clsx",
     "connectquery",
     "connectrpc",
+    "Favo",
+    "Favorited",
     "fontawesome",
     "fortawesome",
-    "Favorited",
     "Hackathon",
     "NNYD",
     "nocheck",
@@ -24,6 +25,7 @@
     "qrcode",
     "recaptcha",
     "Recaptcha",
+    "Repost",
     "tanstack",
     "totp",
     "Totp",
@@ -32,12 +34,8 @@
     "unfollow",
     "Unfollow",
     "volta",
-    "Repost",
-    "connectquery",
-    "zustand",
-    "Repost",
-    "Favorited",
-    "Favo"
+    "webp",
+    "zustand"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect
