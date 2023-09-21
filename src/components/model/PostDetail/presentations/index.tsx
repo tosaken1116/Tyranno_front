@@ -92,6 +92,7 @@ export const PostDetailPresentation: React.FC<Props> = ({
               onClick={clickReplyButton}
             />
           }
+          label={String(replyNumber)}
         />
         <IconWithLabel
           icon={
@@ -102,7 +103,7 @@ export const PostDetailPresentation: React.FC<Props> = ({
               onClick={clickRepostButton}
             />
           }
-          label={String(replyNumber)}
+          label="0"
         />
 
         <IconWithLabel

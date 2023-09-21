@@ -124,6 +124,7 @@ export const Card: React.FC<Props> = ({
                 }}
               />
             }
+            label={String(replyNumber)}
           />
           <IconWithLabel
             icon={
@@ -134,7 +135,7 @@ export const Card: React.FC<Props> = ({
                 onClick={(): void => clickRepostButton(id)}
               />
             }
-            label={String(replyNumber)}
+            label="0"
           />
 
           <IconWithLabel
