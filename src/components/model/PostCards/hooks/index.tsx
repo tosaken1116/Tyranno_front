@@ -1,82 +1,135 @@
-import type { Dispatch, SetStateAction } from 'react';
-import { useState } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import type { Post } from '@/gen/schemas/protos/v1/post_pb';
-import type { User } from '@/gen/schemas/protos/v1/user_pb';
 
-export const usePostCards = (): {
-  posts: Post[];
-  setPosts: Dispatch<SetStateAction<Post[]>>;
-  getPosts: () => void;
-} => {
-  const [posts, setPosts] = useState<Post[]>([]);
+import {
+  createFavorite,
+  deleteFavorite,
+  getPosts,
+} from '@/gen/schemas/protos/v1/post-PostService_connectquery';
 
-  const user1: User = {
-    displayId: 'cat',
-    name: 'cat',
-    icon: 'https://avatars.githubusercontent.com/u/65708479?v=4',
-    profile: 'cat',
-    createdAt: '2022/03/05 12:32:42',
-    updatedAt: '2022/03/05 12:32:42',
-    followNumber: 0,
-    followerNumber: 0,
-  } as User;
-
-  const user2: User = {
-    displayId: 'cat',
-    name: 'cat',
-    icon: 'https://avatars.githubusercontent.com/u/65708479?v=4',
-    profile: 'cat',
-    createdAt: '2022/03/05 12:32:42',
-    updatedAt: '2022/03/05 12:32:42',
-    followNumber: 0,
-    followerNumber: 0,
-  } as User;
-
-  const user3: User = {
-    displayId: 'cat',
-    name: 'cat',
-    icon: 'https://avatars.githubusercontent.com/u/65708479?v=4',
-    profile: 'cat',
-    createdAt: '2022/03/05 12:32:42',
-    updatedAt: '2022/03/05 12:32:42',
-    followNumber: 0,
-    followerNumber: 0,
-  } as User;
-
-  const post1: Post = {
-    id: 1,
-    text: 'cat',
-    user: user1,
-    favoriteNumber: 0,
-    publishedAt: '2022/03/05 12:32:42',
-    createdAt: '2022/03/05 12:32:42',
-    updatedAt: '2022/03/05 12:32:42',
-  } as Post;
-
-  const post2: Post = {
-    id: 2,
-    text: 'cat',
-    user: user2,
-    favoriteNumber: 0,
-    publishedAt: '2022/03/05 12:32:42',
-    createdAt: '2022/03/05 12:32:42',
-    updatedAt: '2022/03/05 12:32:42',
-  } as Post;
-
-  const post3: Post = {
-    id: 3,
-    text: 'cat',
-    user: user3,
-    favoriteNumber: 0,
-    publishedAt: '2022/03/05 12:32:42',
-    createdAt: '2022/03/05 12:32:42',
-    updatedAt: '2022/03/05 12:32:42',
-  } as Post;
-
-  const getPosts = (): void => {
-    setPosts([post1, post2, post3]);
+type IUsePostCards = {
+  posts: Post[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  isEmpty: boolean;
+  updatePosts: () => Promise<void>;
+  openPostDetail: ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }) => void;
+  clickReplyButton: ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }) => void;
+  clickFavoriteButton: (
+    id: number,
+    isAlreadyFavorite: boolean
+  ) => Promise<void>;
+  clickRepostButton: (id: number) => void;
+  clickShareButton: () => void;
+};
+export const usePostCards = (): IUsePostCards => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { data, isError, isLoading, refetch } = useQuery(
+    getPosts.useQuery(
+      {},
+      {
+        callOptions: {
+          headers: [
+            ['AuthProvider', 'origin'],
+            ['Authorization', `Bearer ${localStorage.getItem('jwtToken')}`],
+          ],
+        },
+      }
+    )
+  );
+  const { mutateAsync: favorite } = useMutation(createFavorite.useMutation());
+  const { mutateAsync: disFavorite } = useMutation(
+    deleteFavorite.useMutation({
+      callOptions: {
+        headers: [
+          ['AuthProvider', 'origin'],
+          ['Authorization', `Bearer ${localStorage.getItem('jwtToken')}`],
+        ],
+      },
+    })
+  );
+  const updatePosts = async (): Promise<void> => {
+    await refetch();
   };
 
-  return { posts, setPosts, getPosts };
+  const openPostDetail = ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }): void => {
+    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
+
+    current.set(paramKey, paramValue);
+
+    const search = current.toString();
+    const query = search ? `?${search}` : '';
+
+    router.push(`${pathname}${query}`);
+  };
+  const clickReplyButton = ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }): void => {
+    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
+
+    current.set('reply', 'true');
+    current.set(paramKey, paramValue);
+
+    const search = current.toString();
+    const query = search ? `?${search}` : '';
+
+    router.push(`${pathname}${query}`);
+  };
+  const clickFavoriteButton = async (
+    id: number,
+    isAlreadyFavorite: boolean
+  ): Promise<void> => {
+    if (isAlreadyFavorite) {
+      void disFavorite({ favoriteAt: id });
+      void (await refetch());
+      return;
+    }
+    void favorite({ favoriteAt: id });
+    void (await refetch());
+  };
+  const clickRepostButton = (id: number): void => {
+    console.log(id);
+    return;
+  };
+  const clickShareButton = (): void => {
+    console.log('');
+  };
+  return {
+    posts: data?.posts,
+    updatePosts,
+    isError: isError && !isLoading,
+    isLoading: isLoading && !isError,
+    isEmpty: data?.posts?.length === 0 && !isLoading && !isError,
+    openPostDetail,
+    clickReplyButton,
+    clickFavoriteButton,
+    clickRepostButton,
+    clickShareButton,
+  };
 };

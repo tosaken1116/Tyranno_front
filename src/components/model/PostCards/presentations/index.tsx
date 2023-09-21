@@ -6,10 +6,25 @@ import { Divider } from '@/components/ui/Divider';
 
 type Props = {
   posts: Post[];
-  openPostDetail: () => void;
-  clickReplyButton: () => void;
-  clickFavoriteButton: () => void;
-  clickRepostButton: () => void;
+  openPostDetail: ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }) => void;
+  clickReplyButton: ({
+    paramKey,
+    paramValue,
+  }: {
+    paramKey: string;
+    paramValue: string;
+  }) => void;
+  clickFavoriteButton: (
+    id: number,
+    isAlreadyFavorite: boolean
+  ) => Promise<void>;
+  clickRepostButton: (id: number) => void;
   clickShareButton: () => void;
 };
 
@@ -25,6 +40,7 @@ export const PostCardsPresentation: React.FC<Props> = ({
     {posts.map((item) => (
       <div key={Number(item.id)}>
         <Card
+          id={Number(item.id)}
           userName={item.user!.name}
           userDisplayId={item.user!.displayId}
           userIcon={item.user!.icon}
