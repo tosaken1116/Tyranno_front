@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useGetDetail } from './hooks';
 import { PostDetailPresentation } from './presentations';
@@ -10,7 +10,13 @@ import { PostDetailLoadingPresentation } from './presentations/loading';
 export const PostDetail: React.FC = () => {
   const { post, isError, isLoading, createFavorite, deleteFavorite } =
     useGetDetail();
-  const [newFavorite, setNewFavorite] = useState(false);
+
+  const isFavorite = post?.isFavorited ?? false;
+  const [newFavorite, setNewFavorite] = useState<boolean>(false);
+
+  useEffect(() => {
+    setNewFavorite(isFavorite);
+  }, [isFavorite]);
 
   const clickReplyButton = (): void => {};
   const clickFavoriteButton = (): void => {
@@ -34,10 +40,12 @@ export const PostDetail: React.FC = () => {
       userDisplayId={post?.user?.displayId ?? ''}
       publishedAt={post?.publishedAt ?? ''}
       postText={post?.text ?? ''}
-      favoriteNumber={(post?.favoriteNumber ?? 0) + (newFavorite ? 1 : 0)}
+      favoriteNumber={
+        (post?.favoriteNumber ?? 0) +
+        (newFavorite && !isFavorite ? 1 : !newFavorite && isFavorite ? -1 : 0)
+      }
       replyNumber={post?.replyNumber ?? 0}
       isAlreadyFavorite={newFavorite}
-      isAlreadyReply={false}
       clickReplyButton={clickReplyButton}
       clickFavoriteButton={clickFavoriteButton}
       clickRepostButton={clickRepostButton}

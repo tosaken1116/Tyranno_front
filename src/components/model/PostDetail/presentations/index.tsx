@@ -23,7 +23,6 @@ type Props = {
   favoriteNumber: number;
   replyNumber: number;
   isAlreadyFavorite?: boolean;
-  isAlreadyReply?: boolean;
   clickReplyButton: () => void;
   clickFavoriteButton: () => void;
   clickRepostButton: () => void;
@@ -39,7 +38,6 @@ export const PostDetailPresentation: React.FC<Props> = ({
   favoriteNumber,
   replyNumber,
   isAlreadyFavorite = false,
-  isAlreadyReply = false,
   clickReplyButton,
   clickFavoriteButton,
   clickRepostButton,
@@ -96,20 +94,11 @@ export const PostDetailPresentation: React.FC<Props> = ({
           }
         />
         <IconWithLabel
-          selected={isAlreadyReply}
           icon={
             <FontAwesomeIcon
               icon={faRepeat}
               size="lg"
               className="cursor-pointer p-1 rounded-medium hover:bg-deep-red-dark"
-              onClick={clickRepostButton}
-            />
-          }
-          selectedIcon={
-            <FontAwesomeIcon
-              icon={faRepeat}
-              size="lg"
-              className="cursor-pointer bg-deep-red-dark p-1 rounded-medium"
               onClick={clickRepostButton}
             />
           }
