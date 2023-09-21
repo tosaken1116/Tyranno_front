@@ -17,6 +17,15 @@ module.exports = {
       full: ROUNDED.FULL,
     },
     extend: {
+      keyframes: {
+        cracker: {
+          '0%': { transform: 'translateY(0)', opacity: 1 },
+          '100%': { transform: 'translateY(100vh)', opacity: 0 },
+        },
+      },
+      animation: {
+        cracker: 'cracker 2s',
+      },
       screen: {
         'xs': BREAKPOINTS.XS,
         'sm': BREAKPOINTS.SM,

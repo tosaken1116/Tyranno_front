@@ -24,7 +24,7 @@ export const CreateAccountCard: React.FC = () => {
     authenticationCodeUrl,
   } = useCreateAccountCard();
   return (
-    <div className="bg-gold-dark relative flex flex-col items-center rounded-large p-8 w-[640px]">
+    <div className="bg-gold-dark relative flex flex-col items-center rounded-large p-8 w-[640px] ">
       <div className="content-center">
         <ProgressNumber totalNum={totalProgress} selectedNum={authProgress} />
       </div>
