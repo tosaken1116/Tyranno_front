@@ -10,6 +10,8 @@ import { ConnectClient } from '@/components/functional/ConnectClient';
 import { PostCards } from '@/components/model/PostCards';
 import { PostDetail } from '@/components/model/PostDetail';
 import { PostForm } from '@/components/model/PostForm';
+import { ReplyForm } from '@/components/model/ReplyForm';
+import { ReplyList } from '@/components/model/ReplyList';
 import { SideBar } from '@/components/model/SideBar';
 
 export const Screen: React.FC = () => {
@@ -52,6 +54,8 @@ export const Screen: React.FC = () => {
                 />
               </div>
               <PostDetail />
+              <ReplyForm userIcon="https://avatars.githubusercontent.com/u/65708479?v=4" />
+              <ReplyList />
             </>
           ) : null}
         </div>
