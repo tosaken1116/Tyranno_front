@@ -19,22 +19,21 @@ export const PostFormPresentation: React.FC<Props> = ({
   changeText,
   clickPostButton,
 }) => (
-  <div className="w-full flex items-start gap-3 px-5 py-5">
-    <div className="w-12 h-12 overflow-hidden rounded-full">
+  <div className="w-full flex items-start gap-3 px-0 py-5 drop-shadow-2xl">
+    <div className="w-12 h-12 overflow-hidden rounded-full shrink-0">
       <Image
         src={userIcon}
         width={100}
         height={100}
         alt="ユーザーアイコン"
-        className="w-full h-full"
+        className="w-12 h-12"
       />
     </div>
-    <div className="flex flex-col items-end gap-1">
+    <div className="flex flex-col items-end gap-1 w-full">
       <textarea
         value={text}
         name="投稿入力フォーム"
         id="post-form"
-        cols={30}
         rows={5}
         className="outline-none resize-none w-full bg-custom-dark-light text-lg px-2 py-1 rounded-medium border border-custom-dark-light focus:border-gold-main"
         onChange={changeText}

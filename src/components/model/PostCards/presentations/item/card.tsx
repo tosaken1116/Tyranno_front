@@ -58,7 +58,6 @@ export const Card: React.FC<Props> = ({
   favoriteNumber,
   replyNumber,
   isAlreadyFavorite = false,
-  isAlreadyReply = false,
   clickReplyButton,
   clickFavoriteButton,
   openPostDetail,
@@ -127,20 +126,11 @@ export const Card: React.FC<Props> = ({
             }
           />
           <IconWithLabel
-            selected={isAlreadyReply}
             icon={
               <FontAwesomeIcon
                 icon={faRepeat}
                 size="sm"
                 className="cursor-pointer p-1 rounded-medium hover:bg-deep-red-dark"
-                onClick={(): void => clickRepostButton(id)}
-              />
-            }
-            selectedIcon={
-              <FontAwesomeIcon
-                icon={faRepeat}
-                size="sm"
-                className="cursor-pointer bg-deep-red-dark p-1 rounded-medium"
                 onClick={(): void => clickRepostButton(id)}
               />
             }

@@ -35,7 +35,14 @@
     "Unfollow",
     "volta",
     "webp",
-    "zustand"
+    "Repost",
+    "connectquery",
+    "zustand",
+    "Repost",
+    "Favorited",
+    "Favo",
+    "Xmark",
+    "signup"
   ],
   "ignorePaths": []
   // flagWords - list of words to be always considered incorrect

@@ -36,9 +36,9 @@ export const PostCardsPresentation: React.FC<Props> = ({
   clickRepostButton,
   clickShareButton,
 }) => (
-  <div className="w-full h-full">
+  <div className="w-full h-fit py-10">
     {posts.map((item) => (
-      <div key={Number(item.id)}>
+      <div key={Number(item.id)} className="h-fit">
         <Card
           id={Number(item.id)}
           userName={item.user!.name}
@@ -48,8 +48,7 @@ export const PostCardsPresentation: React.FC<Props> = ({
           postText={item.text}
           favoriteNumber={item.favoriteNumber}
           replyNumber={item.replyNumber}
-          isAlreadyFavorite
-          isAlreadyReply={false}
+          isAlreadyFavorite={item.isFavorited}
           openPostDetail={openPostDetail}
           clickFavoriteButton={clickFavoriteButton}
           clickReplyButton={clickReplyButton}
