@@ -14,8 +14,7 @@ type Props = {
 export const authInterceptor: Interceptor = (next) => async (req) => {
   const accessToken = localStorage.getItem('accessToken');
   if (accessToken != null) {
-    req.header.set('Authorization', `Bearer ${accessToken}`);
-    req.header.set('AuthProvider', 'firebase');
+    req.header.set('Origin', 'tyranno-front.vercel.app');
   }
   return await next(req);
 };
