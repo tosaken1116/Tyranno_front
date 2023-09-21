@@ -63,6 +63,11 @@ export class Post extends Message<Post> {
    */
   updatedAt = '';
 
+  /**
+   * @generated from field: bool is_favorited = 10;
+   */
+  isFavorited = false;
+
   constructor(data?: PartialMessage<Post>) {
     super();
     proto3.util.initPartial(data, this);
@@ -101,6 +106,12 @@ export class Post extends Message<Post> {
     },
     { no: 8, name: 'created_at', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
     { no: 9, name: 'updated_at', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    {
+      no: 10,
+      name: 'is_favorited',
+      kind: 'scalar',
+      T: 8 /* ScalarType.BOOL */,
+    },
   ]);
 
   static fromBinary(

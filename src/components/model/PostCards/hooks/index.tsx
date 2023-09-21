@@ -47,7 +47,12 @@ export const usePostCards = (): IUsePostCards => {
         callOptions: {
           headers: [
             ['AuthProvider', 'origin'],
-            ['Authorization', `Bearer ${localStorage.getItem('jwtToken')}`],
+            [
+              'Authorization',
+              typeof window !== 'undefined'
+                ? `Bearer ${localStorage.getItem('jwtToken')}`
+                : '',
+            ],
           ],
         },
       }
@@ -59,7 +64,12 @@ export const usePostCards = (): IUsePostCards => {
       callOptions: {
         headers: [
           ['AuthProvider', 'origin'],
-          ['Authorization', `Bearer ${localStorage.getItem('jwtToken')}`],
+          [
+            'Authorization',
+            typeof window !== 'undefined'
+              ? `Bearer ${localStorage.getItem('jwtToken')}`
+              : '',
+          ],
         ],
       },
     })
