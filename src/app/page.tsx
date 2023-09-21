@@ -37,23 +37,7 @@ export default function Home(): ReactNode {
         <div className="min-w-[400px]  w-1/2 max-w-[500px] border-r border-l border-custom-dark-main border-opacity-50 px-5 ml-5">
           <PostForm userIcon="https://avatars.githubusercontent.com/u/65708479?v=4" />
           <div className="h-[calc(100vh-226px)] overflow-y-auto">
-            <PostCards
-              openPostDetail={(): void => {
-                console.log('click post card');
-              }}
-              clickFavoriteButton={(): void => {
-                console.log('clickFavoriteButton');
-              }}
-              clickReplyButton={(): void => {
-                console.log('clickReplyButton');
-              }}
-              clickRepostButton={(): void => {
-                console.log('clickRepostButton');
-              }}
-              clickShareButton={(): void => {
-                console.log('clickShareButton');
-              }}
-            />
+            <PostCards />
           </div>
         </div>
         <div className="min-w-[300px] w-1/2 max-w-[500px] py-5 px-5">
